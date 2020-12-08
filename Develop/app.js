@@ -11,108 +11,109 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const employeeArray = [];
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-// inquirer.prompt([
-// 	/*{
-// 		type: "list",
-// 		message: "Which type of team member would you like to add?",
-// 		name: "type",
-// 		choices: ["Manager","Intern","Engineer","I don't want to add any more team members"],
-// 	},*/
+// // Write code to use inquirer to gather information about the development team members,
+// // and to create objects for each team member (using the correct classes as blueprints!)
+inquirer.prompt([
+	/*{
+		type: "list",
+		message: "Which type of team member would you like to add?",
+		name: "type",
+		choices: ["Manager","Intern","Engineer","I don't want to add any more team members"],
+	},*/
 
-// 	{
-// 		type: "input",
-// 		message: "What is your manager's name?",
-// 		name: "name",
-// 	},
-// 	{
-// 		type: "input",
-// 		message: "What is your manager's id?",
-// 		name: "id"
-// 	},
-// 	{
-// 		type: "input",
-// 		message: "What is your manager's email?",
-// 		name: "email"
-// 	},
-// 	{
-// 		type: "input",
-// 		message: "What is your manager's office number?",
-// 		name: "office number"
-// 	}
-// 	])
-// .then((manager)=>{
-// 	console.log(manager);
-// 	employeeArray.push(manager);
-// inquirer.prompt([
-// 	{
-// 		type: "input",
-// 		message: "What is your intern's name?",
-// 		name: "name",
-// 	},
-// 	{
-// 		type: "input",
-// 		message: "What is your intern's id?",
-// 		name: "id"
-// 	},
-// 	{
-// 		type: "input",
-// 		message: "What is your intern's email?",
-// 		name: "email"
-// 	},
-// 	{
-// 		type: "input",
-// 		message: "What is your intern's school?",
-// 		name: "school"
-// 	}
+	{
+		type: "input",
+		message: "What is your manager's name?",
+		name: "name",
+	},
+	{
+		type: "input",
+		message: "What is your manager's id?",
+		name: "id"
+	},
+	{
+		type: "input",
+		message: "What is your manager's email?",
+		name: "email"
+	},
+	{
+		type: "input",
+		message: "What is your manager's office number?",
+		name: "office number"
+	}
+	])
+.then((manager)=>{
+	man = new Manager(manager.name, manager.id, manager.email, manager['office number']);
+	console.log(man);
+	employeeArray.push(man);
+inquirer.prompt([
+	{
+		type: "input",
+		message: "What is your intern's name?",
+		name: "name",
+	},
+	{
+		type: "input",
+		message: "What is your intern's id?",
+		name: "id"
+	},
+	{
+		type: "input",
+		message: "What is your intern's email?",
+		name: "email"
+	},
+	{
+		type: "input",
+		message: "What is your intern's school?",
+		name: "school"
+	}
 
-// 	])
-// .then((intern)=>{
-// 		console.log(intern);
-// 		employeeArray.push(intern);
-// inquirer.prompt([
-// 	{
-// 		type: "input",
-// 		message: "What is your engineer's name?",
-// 		name: "name",
-// 	},
-// 	{
-// 		type: "input",
-// 		message: "What is your engineer's id?",
-// 		name: "id"
-// 	},
-// 	{
-// 		type: "input",
-// 		message: "What is your engineer's email?",
-// 		name: "email"
-// 	},
-// 	{
-// 		type: "input",
-// 		message: "What is your engineer's github account?",
-// 		name: "github"
-// 	}
-// 	])
-// .then((engineer)=>{
-// 		console.log(engineer);
-// 		employeeArray.push(engineer);
-// 		console.log(employeeArray);
+	])
+.then((intern)=>{
+	int = new Intern(intern.name, intern.id, intern.email, intern.school);
+		console.log(int);
+		employeeArray.push(int);
+inquirer.prompt([
+	{
+		type: "input",
+		message: "What is your engineer's name?",
+		name: "name",
+	},
+	{
+		type: "input",
+		message: "What is your engineer's id?",
+		name: "id"
+	},
+	{
+		type: "input",
+		message: "What is your engineer's email?",
+		name: "email"
+	},
+	{
+		type: "input",
+		message: "What is your engineer's github account?",
+		name: "github"
+	}
+	])
+.then((engineer)=>{
+	eng = new Engineer(engineer.name, engineer.id, engineer.email, engineer.github);
+		console.log(eng);
+		employeeArray.push(eng);
+		console.log(employeeArray);
+		const renderFile = render(employeeArray);
+		fs.writeFile(outputPath, renderFile, (err)=>{
+			err ? console.error(err): console.log("Success!");
+		});
+		});	
+	});
+});
 
-// 		});	
-// 	});
-// });
 
-render([
-	 {name: 'cads', id: 'adsc', email: 'asd', 'office number': 'cds'}
-	 // { name: 'cdas', id: 'cda', email: 'csd', school: 'dsac' },
-	 // { name: 'asdc', id: 'ascd', email: 'csd', github: 'sa' }
-	]);
-
-
+		
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
-
+	
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
