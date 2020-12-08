@@ -10,9 +10,104 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-
+const employeeArray = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+// inquirer.prompt([
+// 	/*{
+// 		type: "list",
+// 		message: "Which type of team member would you like to add?",
+// 		name: "type",
+// 		choices: ["Manager","Intern","Engineer","I don't want to add any more team members"],
+// 	},*/
+
+// 	{
+// 		type: "input",
+// 		message: "What is your manager's name?",
+// 		name: "name",
+// 	},
+// 	{
+// 		type: "input",
+// 		message: "What is your manager's id?",
+// 		name: "id"
+// 	},
+// 	{
+// 		type: "input",
+// 		message: "What is your manager's email?",
+// 		name: "email"
+// 	},
+// 	{
+// 		type: "input",
+// 		message: "What is your manager's office number?",
+// 		name: "office number"
+// 	}
+// 	])
+// .then((manager)=>{
+// 	console.log(manager);
+// 	employeeArray.push(manager);
+// inquirer.prompt([
+// 	{
+// 		type: "input",
+// 		message: "What is your intern's name?",
+// 		name: "name",
+// 	},
+// 	{
+// 		type: "input",
+// 		message: "What is your intern's id?",
+// 		name: "id"
+// 	},
+// 	{
+// 		type: "input",
+// 		message: "What is your intern's email?",
+// 		name: "email"
+// 	},
+// 	{
+// 		type: "input",
+// 		message: "What is your intern's school?",
+// 		name: "school"
+// 	}
+
+// 	])
+// .then((intern)=>{
+// 		console.log(intern);
+// 		employeeArray.push(intern);
+// inquirer.prompt([
+// 	{
+// 		type: "input",
+// 		message: "What is your engineer's name?",
+// 		name: "name",
+// 	},
+// 	{
+// 		type: "input",
+// 		message: "What is your engineer's id?",
+// 		name: "id"
+// 	},
+// 	{
+// 		type: "input",
+// 		message: "What is your engineer's email?",
+// 		name: "email"
+// 	},
+// 	{
+// 		type: "input",
+// 		message: "What is your engineer's github account?",
+// 		name: "github"
+// 	}
+// 	])
+// .then((engineer)=>{
+// 		console.log(engineer);
+// 		employeeArray.push(engineer);
+// 		console.log(employeeArray);
+
+// 		});	
+// 	});
+// });
+
+render([
+	 {name: 'cads', id: 'adsc', email: 'asd', 'office number': 'cds'}
+	 // { name: 'cdas', id: 'cda', email: 'csd', school: 'dsac' },
+	 // { name: 'asdc', id: 'ascd', email: 'csd', github: 'sa' }
+	]);
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
